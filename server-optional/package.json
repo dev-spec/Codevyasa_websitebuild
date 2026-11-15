@@ -1,0 +1,22 @@
+{
+  "name": "codevyasa-contact-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Optional contact-form backend (zod + Prisma + Resend/Nodemailer) for the CodeVyasa static site.",
+  "type": "module",
+  "scripts": {
+    "prisma:push": "prisma db push",
+    "prisma:migrate": "prisma migrate deploy",
+    "prisma:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "nodemailer": "^6.9.15",
+    "resend": "^4.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "prisma": "^5.22.0",
+    "@types/nodemailer": "^6.4.16"
+  }
+}

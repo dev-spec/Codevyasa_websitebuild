@@ -1,0 +1,39 @@
+CodeVyasa logo — drop your real logo file here
+===============================================
+
+To put YOUR exact logo (the 3D teal terminal-prompt hexagon) across the whole
+site, drop the image file into THIS folder:
+
+    public/assets/brand/
+
+WHAT TO DROP
+------------
+1. The hexagon MARK (just the symbol, no "CodeVyasa" text), transparent PNG:
+       logo-mark.png
+   - Transparent background (PNG), the hexagon only — exactly like the image
+     you pasted in chat.
+   - As high-resolution as you have (512x512 or 1024x1024 is ideal) so it stays
+     razor-sharp for the favicon and social share image.
+
+2. (Optional) If you also have a full lock-up WITH the "CodeVyasa" wordmark:
+       logo-full.png
+   Otherwise I keep the current "CodeVyasa" text next to your hexagon.
+
+WINDOWS TIP
+-----------
+Windows hides file extensions, so if you name it "logo-mark.png" it may save as
+"logo-mark.png.png". Don't worry — just drop it in and tell me; I'll verify the
+name and fix it (like I did for the videos).
+
+ONCE IT'S HERE, tell me and I will wire it into ALL of these automatically:
+  - header (desktop + mobile menu)
+  - footer
+  - preloader / loading screen
+  - About page founder badge
+  - testimonials orbit hub
+  - favicon (browser tab icon)
+  - Apple touch icon
+  - OG / social-share image
+
+The current drawn logo stays as a safe fallback, so nothing breaks in the
+meantime and it's fully reversible.

@@ -1,0 +1,36 @@
+// Prisma schema for the optional contact backend.
+// Run:  npx prisma migrate dev --name init   (or)   npx prisma db push
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Requirement {
+  product_saas
+  data_engineering
+  devops_cloud
+  ai
+  iot
+}
+
+model Submission {
+  id          String      @id @default(cuid())
+  name        String
+  company     String?
+  email       String
+  phone       String?
+  requirement Requirement
+  message     String?
+  source      String // page the submission came from, e.g. "homepage"
+  ip          String?
+  userAgent   String?
+  createdAt   DateTime    @default(now())
+
+  @@index([createdAt])
+  @@index([email])
+}

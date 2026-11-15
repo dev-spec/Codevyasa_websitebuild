@@ -1,0 +1,582 @@
+import type { ExpertisePage, Pillar } from './types';
+
+/**
+ * Homepage expertise pillars. Blurbs are VERBATIM from the live homepage — do
+ * not edit. Sub-service labels are the exact mega-menu labels and each resolves
+ * to /expertise/[slug].
+ */
+export const pillars: Pillar[] = [
+  {
+    id: 'product',
+    menuLabel: 'Product Engineering / Innovation',
+    name: 'Product / SaaS Development and Innovation',
+    blurb:
+      'CodeVyasa pioneers product/SaaS development, crafting innovative digital solutions that resonate. We turn concepts into reality, creating tech that stands out in a digital crowd.',
+    icon: 'product',
+    subServices: [
+      { label: 'UX / UI Design', slug: 'ux-ui-design' },
+      { label: 'Software Development', slug: 'software-development' },
+      { label: 'Web Platform Development', slug: 'web-platform-development' },
+      { label: 'Mobile Application Development', slug: 'mobile-application-development' },
+      { label: 'Application Modernization', slug: 'application-modernization' },
+      { label: 'Support and Maintenance', slug: 'support-and-maintenance' },
+      { label: 'Quality Control', slug: 'quality-control' },
+    ],
+  },
+  {
+    id: 'data',
+    menuLabel: 'Data Engineering',
+    name: 'Data Engineering',
+    blurb:
+      "At CodeVyasa, we excel in data engineering, unlocking insights from raw data. We transform information into actionable intelligence, fueling your business's strategic decisions.",
+    icon: 'data',
+    subServices: [
+      { label: 'Data Lake and Pipeline Design', slug: 'data-lake-and-pipeline-design' },
+      { label: 'ETL', slug: 'etl' },
+      { label: 'Dashboarding and Analytics', slug: 'dashboarding-and-analytics' },
+      { label: 'Data Observability and Quality', slug: 'data-observability-and-quality' },
+      { label: 'Data Injection Pipeline', slug: 'data-injection-pipeline' },
+    ],
+  },
+  {
+    id: 'devops',
+    menuLabel: 'Dev-Ops & Cloud',
+    name: 'Dev-Ops and Cloud',
+    blurb:
+      'CodeVyasa masters DevOps and cloud solutions, streamlining your digital journey. We ensure seamless operations in the cloud, optimizing performance and scalability.',
+    icon: 'devops',
+    subServices: [
+      { label: 'Cloud Enablement Services', slug: 'cloud-enablement-services' },
+      { label: 'Cloud Migration', slug: 'cloud-migration' },
+      { label: 'DevOps Consulting', slug: 'devops-consulting' },
+      { label: 'Cloud/cyber Security Services', slug: 'cloud-cyber-security-services' },
+      { label: 'Architecture Design', slug: 'architecture-design' },
+    ],
+  },
+  {
+    id: 'ai',
+    menuLabel: 'Artificial Intelligence',
+    name: 'Artificial Intelligence',
+    blurb:
+      'CodeVyasa dives into artificial intelligence, adding brains to your systems. Our AI solutions enhance efficiency, making your tech smarter and more responsive.',
+    icon: 'ai',
+    subServices: [
+      { label: 'Deep Learning', slug: 'deep-learning' },
+      { label: 'Gen AI', slug: 'gen-ai' },
+      { label: 'Automation & RPA', slug: 'automation-rpa' },
+    ],
+  },
+  {
+    id: 'iot',
+    menuLabel: 'IOT',
+    name: 'IoT',
+    blurb:
+      'CodeVyasa explores the world of IoT, connecting devices intelligently. We turn your hardware into a smart ecosystem, enabling real-time communication and automation.',
+    icon: 'iot',
+    subServices: [
+      { label: 'Embedded System Design and Testing', slug: 'embedded-system-design-and-testing' },
+      { label: 'Hardware Design and Testing', slug: 'hardware-design-and-testing' },
+      { label: 'Data Pipeline Injection', slug: 'data-injection-pipeline-2' },
+      { label: 'Data Analytics', slug: 'data-analytics' },
+    ],
+  },
+];
+
+export const pillarById = Object.fromEntries(pillars.map((p) => [p.id, p]));
+
+// Convenience: pillar name lookup for a given expertise slug.
+export const pillarNameForSlug = (slug: string): string => {
+  const p = pillars.find((pl) => pl.subServices.some((s) => s.slug === slug));
+  return p?.name ?? 'Our Expertise';
+};
+
+/**
+ * Detail-page copy for all 24 expertise services. Copy is written specific to
+ * each discipline (no lorem). NOTE for maintainers: spot-check against the live
+ * /expertise/<slug> pages and replace where the live copy differs (TODO_ASSETS §8).
+ */
+export const expertisePages: ExpertisePage[] = [
+  {
+    slug: 'ux-ui-design',
+    title: 'UX / UI Design',
+    pillarId: 'product',
+    eyebrow: 'Product / SaaS',
+    summary: 'Research-led product design that turns complex workflows into interfaces people love.',
+    overview: [
+      'We design digital products end to end — from discovery and user research to information architecture, interaction design and pixel-perfect UI. Every screen is grounded in real user behaviour, not guesswork.',
+      'Our designers work in the same sprints as our engineers, so what we prototype is exactly what ships: consistent design systems, accessible components and interfaces that scale as your product grows.',
+    ],
+    capabilities: [
+      { title: 'Product discovery', description: 'Stakeholder workshops, user interviews and journey mapping to frame the right problem before a single pixel is drawn.' },
+      { title: 'Design systems', description: 'Reusable, tokenized component libraries that keep every surface consistent and speed up delivery.' },
+      { title: 'Interaction & prototyping', description: 'High-fidelity, clickable prototypes that de-risk decisions and get real feedback early.' },
+      { title: 'Accessibility', description: 'WCAG-aligned contrast, focus and semantics baked in from the first artboard.' },
+    ],
+    outcomes: ['Faster time-to-first-usable-build', 'Higher task-completion and retention', 'A design language that scales'],
+    icon: 'design',
+    relatedTech: ['react', 'nextjs', 'flutter'],
+  },
+  {
+    slug: 'software-development',
+    title: 'Software Development',
+    pillarId: 'product',
+    eyebrow: 'Product / SaaS',
+    summary: 'Full-stack engineering teams that build robust, maintainable software at product velocity.',
+    overview: [
+      'From greenfield products to complex platform work, our engineers build software that is clean, tested and built to last. We embed with your team and ship in short, predictable iterations.',
+      'We are language- and framework-agnostic by design, choosing the right stack for your problem and keeping architecture simple enough to evolve.',
+    ],
+    capabilities: [
+      { title: 'Product engineering', description: 'End-to-end feature delivery across frontend, backend and infrastructure.' },
+      { title: 'API & platform work', description: 'Well-documented, versioned APIs and services that other teams can build on.' },
+      { title: 'Test automation', description: 'Unit, integration and end-to-end coverage wired into CI so quality never slips.' },
+      { title: 'Code health', description: 'Reviews, linting and refactoring discipline that keeps velocity high over time.' },
+    ],
+    outcomes: ['Predictable sprint velocity', 'Lower defect escape rate', 'Software that is easy to change'],
+    icon: 'code',
+    relatedTech: ['java', 'python', 'node-js', 'go-lang'],
+  },
+  {
+    slug: 'web-platform-development',
+    title: 'Web Platform Development',
+    pillarId: 'product',
+    eyebrow: 'Product / SaaS',
+    summary: 'Fast, SEO-ready web platforms and portals engineered for scale.',
+    overview: [
+      'We build high-performance web platforms — customer portals, marketplaces, SaaS dashboards and content-driven sites — with modern rendering strategies that keep them fast on every device.',
+      'Core Web Vitals, accessibility and search visibility are first-class engineering concerns, not afterthoughts.',
+    ],
+    capabilities: [
+      { title: 'Modern rendering', description: 'SSR, static generation and edge delivery tuned for Core Web Vitals.' },
+      { title: 'Headless architecture', description: 'Composable front-ends decoupled from your CMS, commerce or data layer.' },
+      { title: 'Performance budgets', description: 'Enforced LCP/CLS/INP targets so speed never regresses.' },
+      { title: 'Design-to-code', description: 'Pixel-accurate, component-driven builds straight from the design system.' },
+    ],
+    outcomes: ['Sub-2.5s LCP on mobile', 'Higher organic reach', 'Platforms that scale with traffic'],
+    icon: 'web',
+    relatedTech: ['nextjs', 'react', 'javascript', 'node-js'],
+  },
+  {
+    slug: 'mobile-application-development',
+    title: 'Mobile Application Development',
+    pillarId: 'product',
+    eyebrow: 'Product / SaaS',
+    summary: 'Native and cross-platform apps with native feel and shared velocity.',
+    overview: [
+      'We design and ship mobile apps that feel native on both platforms — whether fully native or cross-platform with Flutter and React Native — with offline support, push, and deep integrations.',
+      'We own the full lifecycle: architecture, delivery, store submission and post-launch iteration.',
+    ],
+    capabilities: [
+      { title: 'Cross-platform', description: 'One codebase, native performance with Flutter or React Native.' },
+      { title: 'Native modules', description: 'Kotlin/Swift where raw performance or hardware access is required.' },
+      { title: 'Offline & sync', description: 'Local-first data with conflict-free sync for real-world networks.' },
+      { title: 'Release engineering', description: 'CI-driven builds, staged rollouts and crash-free release monitoring.' },
+    ],
+    outcomes: ['Faster dual-platform delivery', 'High crash-free rates', 'Consistent brand across devices'],
+    icon: 'mobile',
+    relatedTech: ['flutter', 'reactive-native', 'kotlin', 'ios'],
+  },
+  {
+    slug: 'application-modernization',
+    title: 'Application Modernization',
+    pillarId: 'product',
+    eyebrow: 'Product / SaaS',
+    summary: 'Re-platform legacy systems into cloud-native architectures — without the big-bang risk.',
+    overview: [
+      'We modernize legacy applications incrementally: strangler-fig migrations, service extraction and UI refreshes that keep the business running while the foundations are rebuilt.',
+      'The result is a system that is cheaper to run, faster to change and ready for the cloud.',
+    ],
+    capabilities: [
+      { title: 'Assessment', description: 'Dependency mapping and a risk-ranked modernization roadmap.' },
+      { title: 'Strangler migrations', description: 'Incremental replacement so value ships continuously, not at the end.' },
+      { title: 'Re-architecture', description: 'Monolith-to-services decomposition with clear domain boundaries.' },
+      { title: 'Data migration', description: 'Safe, verifiable movement of data with zero-loss cutover plans.' },
+    ],
+    outcomes: ['Lower total cost of ownership', 'Reduced operational risk', 'A platform ready to scale'],
+    icon: 'refresh',
+    relatedTech: ['java', 'node-js', 'python', 'sql-databases'],
+  },
+  {
+    slug: 'support-and-maintenance',
+    title: 'Support and Maintenance',
+    pillarId: 'product',
+    eyebrow: 'Product / SaaS',
+    summary: 'Proactive application support that keeps your product healthy, secure and current.',
+    overview: [
+      'Our managed support keeps applications reliable long after launch — monitoring, incident response, dependency upgrades and continuous small improvements.',
+      'We treat maintenance as product work: every ticket is an opportunity to make the system more robust.',
+    ],
+    capabilities: [
+      { title: 'SLA-backed support', description: 'Tiered response with clear ownership and escalation paths.' },
+      { title: 'Observability', description: 'Proactive monitoring and alerting so issues are caught before users are.' },
+      { title: 'Dependency hygiene', description: 'Scheduled upgrades and security patching to reduce drift and risk.' },
+      { title: 'Continuous improvement', description: 'A steady stream of small enhancements that compound over time.' },
+    ],
+    outcomes: ['Higher uptime', 'Faster mean-time-to-recovery', 'Lower long-term risk'],
+    icon: 'support',
+    relatedTech: ['node-js', 'python', 'sql-databases'],
+  },
+  {
+    slug: 'quality-control',
+    title: 'Quality Control',
+    pillarId: 'product',
+    eyebrow: 'Product / SaaS',
+    summary: 'Test strategy and automation that ship confidence, not just coverage.',
+    overview: [
+      'We build quality in — from test strategy and automation frameworks to performance and security testing — so releases are predictable and defects are caught early.',
+      'Our QA engineers work inside delivery teams, wiring checks directly into your CI pipeline.',
+    ],
+    capabilities: [
+      { title: 'Test automation', description: 'Maintainable UI, API and end-to-end suites integrated into CI/CD.' },
+      { title: 'Performance testing', description: 'Load and stress testing that surfaces bottlenecks before customers do.' },
+      { title: 'Security testing', description: 'Automated and manual checks aligned to OWASP best practice.' },
+      { title: 'Release gating', description: 'Quality gates that block regressions from ever reaching production.' },
+    ],
+    outcomes: ['Fewer production defects', 'Faster, safer releases', 'Objective release confidence'],
+    icon: 'shield',
+    relatedTech: ['javascript', 'python', 'java'],
+  },
+  {
+    slug: 'data-lake-and-pipeline-design',
+    title: 'Data Lake and Pipeline Design',
+    pillarId: 'data',
+    eyebrow: 'Data Engineering',
+    summary: 'Scalable lakehouse foundations and pipelines that turn raw data into a trusted asset.',
+    overview: [
+      'We design data lakes and lakehouse platforms that unify batch and streaming data with governance, lineage and cost control built in from day one.',
+      'The outcome is a single, reliable foundation your analytics and AI workloads can depend on.',
+    ],
+    capabilities: [
+      { title: 'Lakehouse architecture', description: 'Bronze/silver/gold layering with open table formats and governance.' },
+      { title: 'Batch & streaming', description: 'Unified pipelines for both historical and real-time data.' },
+      { title: 'Lineage & cataloguing', description: 'Discoverable, documented datasets with end-to-end lineage.' },
+      { title: 'Cost optimization', description: 'Partitioning, tiering and compute tuning that keep spend predictable.' },
+    ],
+    outcomes: ['One trusted source of truth', 'Faster analytics onboarding', 'Predictable data spend'],
+    icon: 'pipeline',
+    relatedTech: ['spark-scala', 'python', 'data-warehouse'],
+  },
+  {
+    slug: 'etl',
+    title: 'ETL',
+    pillarId: 'data',
+    eyebrow: 'Data Engineering',
+    summary: 'Robust ETL/ELT pipelines that move and shape data reliably at any volume.',
+    overview: [
+      'We build resilient ETL and ELT pipelines that ingest, cleanse and transform data from any source into analytics-ready models — idempotent, observable and easy to backfill.',
+      'Every pipeline is tested and monitored so data teams trust the numbers.',
+    ],
+    capabilities: [
+      { title: 'Ingestion', description: 'Connectors for databases, APIs, files and event streams.' },
+      { title: 'Transformation', description: 'Modular, tested transforms with clear data contracts.' },
+      { title: 'Orchestration', description: 'Scheduled, dependency-aware DAGs with retries and alerting.' },
+      { title: 'Backfill & replay', description: 'Idempotent design that makes reprocessing safe and simple.' },
+    ],
+    outcomes: ['Reliable, on-time data', 'Trusted downstream metrics', 'Lower pipeline maintenance'],
+    icon: 'pipeline',
+    relatedTech: ['python', 'spark-scala', 'sql-databases'],
+  },
+  {
+    slug: 'dashboarding-and-analytics',
+    title: 'Dashboarding and Analytics',
+    pillarId: 'data',
+    eyebrow: 'Data Engineering',
+    summary: 'Decision-ready dashboards and semantic models the whole business can trust.',
+    overview: [
+      'We turn modelled data into dashboards and self-serve analytics that answer real business questions — with a governed semantic layer so every team measures the same way.',
+      'From executive KPIs to operational drill-downs, we make data usable.',
+    ],
+    capabilities: [
+      { title: 'Semantic modelling', description: 'Consistent metrics defined once and reused everywhere.' },
+      { title: 'Executive dashboards', description: 'Clear KPI views that drive decisions, not decoration.' },
+      { title: 'Self-serve analytics', description: 'Governed exploration so teams answer their own questions.' },
+      { title: 'Embedded analytics', description: 'Insights delivered inside the products your users already use.' },
+    ],
+    outcomes: ['One version of the truth', 'Faster, data-led decisions', 'Less ad-hoc reporting'],
+    icon: 'chart',
+    relatedTech: ['python', 'sql-databases', 'data-warehouse'],
+  },
+  {
+    slug: 'data-observability-and-quality',
+    title: 'Data Observability and Quality',
+    pillarId: 'data',
+    eyebrow: 'Data Engineering',
+    summary: 'Automated data quality and observability so bad data never reaches decisions.',
+    overview: [
+      'We instrument your data platform with freshness, volume, schema and distribution checks — plus lineage-aware alerting — so issues are caught at the source.',
+      'Quality becomes measurable, and trust in data goes up.',
+    ],
+    capabilities: [
+      { title: 'Quality checks', description: 'Automated tests for freshness, nulls, uniqueness and ranges.' },
+      { title: 'Anomaly detection', description: 'Statistical monitoring that flags drift before it spreads.' },
+      { title: 'Lineage-aware alerts', description: 'Know exactly which dashboards an incident affects.' },
+      { title: 'SLAs for data', description: 'Contracts and dashboards that make reliability visible.' },
+    ],
+    outcomes: ['Fewer data incidents', 'Faster root-cause analysis', 'Higher trust in analytics'],
+    icon: 'shield',
+    relatedTech: ['python', 'spark-scala', 'sql-databases'],
+  },
+  {
+    slug: 'data-injection-pipeline',
+    title: 'Data Injection Pipeline',
+    pillarId: 'data',
+    eyebrow: 'Data Engineering',
+    summary: 'High-throughput ingestion pipelines for real-time and batch data at scale.',
+    overview: [
+      'We build ingestion pipelines that reliably capture high-volume data from applications, devices and third parties — with schema enforcement, buffering and exactly-once guarantees where they matter.',
+      'Your downstream systems always get clean, well-shaped events.',
+    ],
+    capabilities: [
+      { title: 'Streaming ingestion', description: 'Event pipelines built on proven, scalable messaging systems.' },
+      { title: 'Schema enforcement', description: 'Contracts and validation that reject malformed data at the edge.' },
+      { title: 'Buffering & replay', description: 'Durable queues that absorb spikes and enable safe replay.' },
+      { title: 'Delivery guarantees', description: 'At-least-once or exactly-once semantics tuned to the use case.' },
+    ],
+    outcomes: ['No lost events', 'Real-time data availability', 'Resilience under load'],
+    icon: 'pipeline',
+    relatedTech: ['spark-scala', 'python', 'go-lang'],
+  },
+  {
+    slug: 'cloud-enablement-services',
+    title: 'Cloud Enablement Services',
+    pillarId: 'devops',
+    eyebrow: 'Dev-Ops & Cloud',
+    summary: 'Cloud foundations, landing zones and platform engineering done right the first time.',
+    overview: [
+      'We set up secure, well-governed cloud foundations — landing zones, identity, networking and guardrails — so your teams can ship fast without compromising on security or cost.',
+      'Everything is codified as infrastructure-as-code and handed over with documentation.',
+    ],
+    capabilities: [
+      { title: 'Landing zones', description: 'Multi-account foundations with guardrails and policy-as-code.' },
+      { title: 'Infrastructure as code', description: 'Reproducible environments defined in Terraform.' },
+      { title: 'Platform engineering', description: 'Golden paths and self-service tooling for product teams.' },
+      { title: 'FinOps', description: 'Cost visibility and controls that keep the cloud bill predictable.' },
+    ],
+    outcomes: ['Secure by default', 'Faster team onboarding', 'Predictable cloud cost'],
+    icon: 'cloud',
+    relatedTech: ['go-lang', 'python', 'node-js'],
+  },
+  {
+    slug: 'cloud-migration',
+    title: 'Cloud Migration',
+    pillarId: 'devops',
+    eyebrow: 'Dev-Ops & Cloud',
+    summary: 'Low-risk migrations to the cloud with measurable performance and cost wins.',
+    overview: [
+      'We migrate workloads to the cloud with a right-sized strategy per application — rehost, replatform or refactor — and a cutover plan that protects the business.',
+      'You get the benefits of the cloud without the horror stories.',
+    ],
+    capabilities: [
+      { title: 'Migration assessment', description: 'The 6 Rs applied per workload with a clear business case.' },
+      { title: 'Zero-downtime cutover', description: 'Phased, reversible migration with rollback plans.' },
+      { title: 'Replatforming', description: 'Containerization and managed-service adoption where it pays off.' },
+      { title: 'Cost & performance tuning', description: 'Right-sizing and autoscaling after landing.' },
+    ],
+    outcomes: ['Lower run cost', 'Improved scalability', 'Minimal business disruption'],
+    icon: 'cloud',
+    relatedTech: ['go-lang', 'java', 'python'],
+  },
+  {
+    slug: 'devops-consulting',
+    title: 'DevOps Consulting',
+    pillarId: 'devops',
+    eyebrow: 'Dev-Ops & Cloud',
+    summary: 'CI/CD, automation and SRE practices that make shipping safe and boring.',
+    overview: [
+      'We help teams ship faster and more safely — modern CI/CD, infrastructure automation, observability and SRE practices that reduce toil and mean-time-to-recovery.',
+      'The goal is simple: deploys become routine, not events.',
+    ],
+    capabilities: [
+      { title: 'CI/CD pipelines', description: 'Automated build, test and deploy with progressive delivery.' },
+      { title: 'Observability', description: 'Metrics, logs and traces wired into actionable alerting.' },
+      { title: 'SRE practices', description: 'SLOs, error budgets and on-call that actually work.' },
+      { title: 'Automation', description: 'Infrastructure and toil eliminated with code.' },
+    ],
+    outcomes: ['Faster deploy frequency', 'Lower change-failure rate', 'Quicker recovery'],
+    icon: 'devops',
+    relatedTech: ['go-lang', 'python', 'node-js'],
+  },
+  {
+    slug: 'cloud-cyber-security-services',
+    title: 'Cloud/cyber Security Services',
+    pillarId: 'devops',
+    eyebrow: 'Dev-Ops & Cloud',
+    summary: 'Security engineered into the platform — from identity to runtime.',
+    overview: [
+      'We harden cloud environments and applications end to end: identity and access, network segmentation, secrets management, vulnerability management and continuous compliance.',
+      'Security is treated as engineering, embedded in the pipeline rather than bolted on.',
+    ],
+    capabilities: [
+      { title: 'Cloud security posture', description: 'Continuous configuration scanning and remediation.' },
+      { title: 'Identity & access', description: 'Least-privilege IAM and zero-trust access patterns.' },
+      { title: 'DevSecOps', description: 'SAST, DAST and dependency scanning in every pipeline.' },
+      { title: 'Compliance', description: 'Controls mapped to the standards your industry requires.' },
+    ],
+    outcomes: ['Reduced attack surface', 'Audit-ready evidence', 'Fewer security incidents'],
+    icon: 'shield',
+    relatedTech: ['go-lang', 'python', 'node-js'],
+  },
+  {
+    slug: 'architecture-design',
+    title: 'Architecture Design',
+    pillarId: 'devops',
+    eyebrow: 'Dev-Ops & Cloud',
+    summary: 'Pragmatic system architecture that balances scale, cost and speed of change.',
+    overview: [
+      'We design system and cloud architectures that fit your reality — not a whiteboard ideal — with clear trade-offs on scalability, resilience, cost and team topology.',
+      'Every decision is documented so the team can carry it forward.',
+    ],
+    capabilities: [
+      { title: 'System design', description: 'Domain-driven boundaries, event flows and data ownership.' },
+      { title: 'Well-Architected reviews', description: 'Structured reviews across reliability, security and cost.' },
+      { title: 'Scalability planning', description: 'Capacity, caching and partitioning strategies for growth.' },
+      { title: 'Architecture decision records', description: 'Documented trade-offs the whole team can trust.' },
+    ],
+    outcomes: ['Right-sized for scale', 'Lower future rework', 'Shared technical direction'],
+    icon: 'server',
+    relatedTech: ['go-lang', 'java', 'node-js'],
+  },
+  {
+    slug: 'deep-learning',
+    title: 'Deep Learning',
+    pillarId: 'ai',
+    eyebrow: 'Artificial Intelligence',
+    summary: 'Custom deep-learning models — from computer vision to forecasting — in production.',
+    overview: [
+      'We build and operationalize deep-learning models for vision, language, forecasting and recommendation — with the MLOps foundations to keep them accurate over time.',
+      'We focus on models that move a business metric, not benchmarks.',
+    ],
+    capabilities: [
+      { title: 'Computer vision', description: 'Detection, classification and OCR for real-world imagery.' },
+      { title: 'Forecasting & recommendation', description: 'Models that predict demand and personalize experiences.' },
+      { title: 'MLOps', description: 'Reproducible training, versioning and monitoring in production.' },
+      { title: 'Model optimization', description: 'Quantization and distillation for cost-efficient inference.' },
+    ],
+    outcomes: ['Measurable model ROI', 'Reliable production inference', 'Models that stay accurate'],
+    icon: 'brain',
+    relatedTech: ['python', 'spark-scala'],
+  },
+  {
+    slug: 'gen-ai',
+    title: 'Gen AI',
+    pillarId: 'ai',
+    eyebrow: 'Artificial Intelligence',
+    summary: 'Generative-AI applications — RAG, agents and copilots — built to be safe and useful.',
+    overview: [
+      'We design and ship generative-AI features grounded in your data: retrieval-augmented assistants, workflow copilots and agentic automations, with evaluation and guardrails built in.',
+      'We help you move past demos to production systems users trust.',
+    ],
+    capabilities: [
+      { title: 'RAG systems', description: 'Grounded assistants over your knowledge with citations.' },
+      { title: 'Agents & copilots', description: 'Tool-using agents that automate multi-step workflows.' },
+      { title: 'Evaluation & guardrails', description: 'Automated evals, safety filters and human-in-the-loop review.' },
+      { title: 'LLMOps', description: 'Prompt versioning, monitoring and cost control in production.' },
+    ],
+    outcomes: ['From demo to production', 'Grounded, trustworthy output', 'Real workflow automation'],
+    icon: 'spark',
+    relatedTech: ['python', 'node-js', 'nextjs'],
+  },
+  {
+    slug: 'automation-rpa',
+    title: 'Automation & RPA',
+    pillarId: 'ai',
+    eyebrow: 'Artificial Intelligence',
+    summary: 'Intelligent automation that removes repetitive work and scales operations.',
+    overview: [
+      'We combine RPA, workflow orchestration and AI to automate high-volume, rules-based processes — freeing teams for higher-value work and cutting error rates.',
+      'We start where the ROI is clearest and expand from there.',
+    ],
+    capabilities: [
+      { title: 'Process automation', description: 'Bots and workflows for repetitive, rules-based tasks.' },
+      { title: 'Intelligent document processing', description: 'AI-powered extraction from documents and forms.' },
+      { title: 'Orchestration', description: 'Reliable, observable long-running workflows.' },
+      { title: 'Human-in-the-loop', description: 'Escalation paths for the cases that need judgement.' },
+    ],
+    outcomes: ['Lower operational cost', 'Fewer manual errors', 'Faster process cycle times'],
+    icon: 'bolt',
+    relatedTech: ['python', 'node-js'],
+  },
+  {
+    slug: 'embedded-system-design-and-testing',
+    title: 'Embedded System Design and Testing',
+    pillarId: 'iot',
+    eyebrow: 'IoT',
+    summary: 'Firmware and embedded systems engineered for reliability in the field.',
+    overview: [
+      'We design, build and test embedded systems and firmware — from board bring-up to real-time control — with rigorous validation for safety- and reliability-critical environments.',
+      'We connect the physical world to your cloud, securely.',
+    ],
+    capabilities: [
+      { title: 'Firmware development', description: 'Bare-metal and RTOS firmware for constrained devices.' },
+      { title: 'Real-time control', description: 'Deterministic control loops for time-critical systems.' },
+      { title: 'Device security', description: 'Secure boot, signed updates and encrypted transport.' },
+      { title: 'Hardware-in-the-loop testing', description: 'Automated validation against real and simulated hardware.' },
+    ],
+    outcomes: ['Field-reliable devices', 'Secure device fleets', 'Faster hardware validation'],
+    icon: 'chip',
+    relatedTech: ['python', 'go-lang'],
+  },
+  {
+    slug: 'hardware-design-and-testing',
+    title: 'Hardware Design and Testing',
+    pillarId: 'iot',
+    eyebrow: 'IoT',
+    summary: 'Electronics and hardware design validated from prototype to production.',
+    overview: [
+      'We support hardware from schematic and PCB design through prototyping, bring-up and design-for-manufacture — with test rigs that catch issues before they reach the field.',
+      'We bridge the gap between a working prototype and a manufacturable product.',
+    ],
+    capabilities: [
+      { title: 'Schematic & PCB', description: 'Circuit and board design optimized for cost and manufacture.' },
+      { title: 'Prototyping & bring-up', description: 'Rapid iteration from first board to validated hardware.' },
+      { title: 'Design for manufacture', description: 'DFM/DFT reviews that reduce production risk.' },
+      { title: 'Test automation', description: 'Automated benches for functional and stress testing.' },
+    ],
+    outcomes: ['Manufacturable designs', 'Lower field-failure rates', 'Faster path to production'],
+    icon: 'chip',
+    relatedTech: ['python'],
+  },
+  {
+    slug: 'data-injection-pipeline-2',
+    title: 'Data Pipeline Injection',
+    pillarId: 'iot',
+    eyebrow: 'IoT',
+    summary: 'Device-to-cloud telemetry pipelines that ingest sensor data at massive scale.',
+    overview: [
+      'We build the ingestion backbone for IoT — securely streaming telemetry from thousands of devices into the cloud, with buffering, schema control and edge pre-processing.',
+      'Your analytics and control systems always have clean, timely device data.',
+    ],
+    capabilities: [
+      { title: 'Device telemetry', description: 'Secure MQTT/HTTP ingestion from large device fleets.' },
+      { title: 'Edge pre-processing', description: 'Filtering and aggregation close to the device to cut cost.' },
+      { title: 'Scalable buffering', description: 'Durable streaming that absorbs bursty device traffic.' },
+      { title: 'Schema control', description: 'Versioned payloads validated on the way in.' },
+    ],
+    outcomes: ['Reliable device data', 'Lower bandwidth cost', 'Scale to large fleets'],
+    icon: 'pipeline',
+    relatedTech: ['go-lang', 'python', 'spark-scala'],
+  },
+  {
+    slug: 'data-analytics',
+    title: 'Data Analytics',
+    pillarId: 'iot',
+    eyebrow: 'IoT',
+    summary: 'Analytics on connected-device data that turns telemetry into action.',
+    overview: [
+      'We turn IoT telemetry into operational insight — anomaly detection, predictive maintenance and real-time monitoring — so connected products get smarter over their lifetime.',
+      'Insight is delivered where it drives action: dashboards, alerts and automated responses.',
+    ],
+    capabilities: [
+      { title: 'Real-time monitoring', description: 'Live dashboards and alerting on streaming device data.' },
+      { title: 'Predictive maintenance', description: 'Models that flag failures before they happen.' },
+      { title: 'Anomaly detection', description: 'Automatic detection of abnormal device behaviour.' },
+      { title: 'Fleet analytics', description: 'Cross-device insight into usage and performance.' },
+    ],
+    outcomes: ['Less unplanned downtime', 'Smarter connected products', 'Actionable device insight'],
+    icon: 'chart',
+    relatedTech: ['python', 'spark-scala', 'sql-databases'],
+  },
+];
+
+export const expertiseBySlug = Object.fromEntries(expertisePages.map((p) => [p.slug, p]));
+export const expertiseSlugs = expertisePages.map((p) => p.slug);

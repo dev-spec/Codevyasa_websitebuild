@@ -1,0 +1,8 @@
+<svg width="210" height="48" viewBox="0 0 210 48" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none">
+    <path d="M43 24 33.5 40.45 14.5 40.45 5 24 14.5 7.55 33.5 7.55Z" transform="translate(1.4 1.9)" stroke="#0b3a38" stroke-width="3.4" stroke-linejoin="round" opacity="0.5"/>
+    <path d="M43 24 33.5 40.45 14.5 40.45 5 24 14.5 7.55 33.5 7.55Z" stroke="#149a96" stroke-width="3.4" stroke-linejoin="round"/>
+    <path d="M14 17 22 24 14 31M25 31H34" stroke="#149a96" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="56" y="31" font-family="'Segoe UI',Arial,sans-serif" font-size="26" font-weight="700" fill="#0B1420">CodeVyasa</text>
+</svg>
